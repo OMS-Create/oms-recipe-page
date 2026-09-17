@@ -27,8 +27,8 @@ Your challenge is to build out this recipe page and get it looking as close to t
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution URL](https://oms-create-oms-recipe-page.vercel.app/)
+- Live Site URL: [live site URL](https://github.com/OMS-Create/oms-recipe-page)
 
 ## My process
 
