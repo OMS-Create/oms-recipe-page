@@ -9,10 +9,9 @@
   --rose-800: hsl(332, 51%, 32%);
   --rose-50: hsl(330, 100%, 98%);
 
-  /* Centralized Custom Properties */
-  --card-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
+  /* Centralized Custom Properties (Fixed 2 Occurrences) */
+  --shadow-card: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
   --attribution-link: hsla(207, 45%, 44%, 0.98);
-  --divider-border: 1px solid var(--stone-150);
 }
 
 * {
@@ -26,7 +25,7 @@
 body {
   background-color: var(--stone-100);
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem); /* Fluid responsive font base */
+  font-size: clamp(0.9375rem, 1vw + 0.75rem, 1rem); /* Fluid base font size */
   color: var(--stone-600);
   display: grid;
   place-items: center;
@@ -36,19 +35,19 @@ body {
 
 main {
   background: var(--white);
-  width: min(100%, 46rem);
-  padding: 1.5rem;
-  border-radius: 0;
-  box-shadow: var(--card-shadow);
+  width: min(100%, 46rem); /* Fluid container bound */
+  padding: clamp(1.5rem, 4vw, 2.5rem); /* Fluid container padding */
+  border-radius: clamp(0rem, 3vw, 1.5rem);
+  box-shadow: var(--shadow-card); /* Replaced raw shadow with custom property */
 }
 
 .img {
-  width: calc(100% + 3rem);
+  width: calc(100% + clamp(3rem, 8vw, 5rem)); /* Dynamic bleed width */
   height: auto;
   border-radius: 0;
-  margin-block-start: -1.5rem;
-  margin-block-end: 1.5rem;
-  margin-inline: -1.5rem;
+  margin-block-start: calc(-1 * clamp(1.5rem, 4vw, 2.5rem));
+  margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
+  margin-inline: calc(-1 * clamp(1.5rem, 4vw, 2.5rem));
   display: block;
 }
 
@@ -59,41 +58,41 @@ h1, h2, h3 {
 }
 
 .heading {
-  font-size: clamp(2.25rem, 5vw, 2.5rem);
-  margin-block-start: 1rem;
-  margin-block-end: 1.5rem;
+  font-size: clamp(2.25rem, 5vw, 2.5rem); /* Responsive heading typography */
+  margin-block-start: clamp(1rem, 3vw, 2.5rem);
+  margin-block-end: clamp(1.25rem, 2.5vw, 1.5rem);
   line-height: 1.1;
 }
 
 .description {
   line-height: 1.5;
-  margin-block-end: 2rem;
+  margin-block-end: clamp(1.5rem, 3vw, 2rem);
 }
 
 .time-needed {
   background-color: var(--rose-50);
-  border-radius: 0.75rem;
-  padding: 1.5rem 1.75rem;
-  margin-block-end: 2rem;
+  border-radius: clamp(0.5rem, 1.5vw, 0.75rem);
+  padding: clamp(1.25rem, 3vw, 1.5rem) clamp(1.5rem, 3.5vw, 1.75rem);
+  margin-block-end: clamp(1.5rem, 3vw, 2rem);
 }
 
 .time-needed h4 {
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
-  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
   color: var(--rose-800);
-  margin-block-end: 1rem;
+  margin-block-end: clamp(0.75rem, 1.5vw, 1rem);
 }
 
 .time-needed ul {
   list-style-position: inside;
   line-height: 1.8;
-  padding-inline-start: 0.5rem;
+  padding-inline-start: clamp(0.25rem, 1vw, 0.5rem);
 }
 
 .time-needed ul li::marker {
   color: var(--rose-800);
-  font-size: 1.2em;
+  font-size: calc(1.2 * 1em); /* Calculated marker size */
 }
 
 br {
@@ -105,9 +104,9 @@ br {
 }
 
 .ingredients, .instructions, .nutri-table {
-  padding-block-end: 2rem;
-  margin-block-end: 2rem;
-  border-block-end: var(--divider-border);
+  padding-block-end: clamp(1.5rem, 3vw, 2rem);
+  margin-block-end: clamp(1.5rem, 3vw, 2rem);
+  border-block-end: 1px solid var(--stone-150);
 }
 
 .nutri-table {
@@ -118,18 +117,18 @@ br {
 
 .ingredients h3, .instructions h3, .nutri-table h3 {
   color: var(--brown-800);
-  font-size: clamp(1.5rem, 1.25rem + 1vw, 1.75rem);
-  margin-block-end: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  margin-block-end: clamp(1.25rem, 2.5vw, 1.5rem);
 }
 
 .ingredients ul, .instructions ol {
-  padding-inline-start: 1.25rem;
+  padding-inline-start: clamp(1rem, 2.5vw, 1.25rem);
   line-height: 1.8;
 }
 
 .ingredients ul li, .instructions ol li {
-  padding-inline-start: 0.75rem;
-  margin-block-end: 0.5rem;
+  padding-inline-start: clamp(0.5rem, 1.5vw, 0.75rem);
+  margin-block-end: clamp(0.375rem, 1vw, 0.5rem);
 }
 
 .ingredients ul li::marker {
@@ -142,7 +141,7 @@ br {
 }
 
 .nutri-table p {
-  margin-block-end: 1.5rem;
+  margin-block-end: clamp(1.25rem, 2.5vw, 1.5rem);
   line-height: 1.5;
 }
 
@@ -152,7 +151,7 @@ table {
 }
 
 tr {
-  border-block-end: var(--divider-border);
+  border-block-end: 1px solid var(--stone-150);
 }
 
 tr:last-child {
@@ -160,7 +159,7 @@ tr:last-child {
 }
 
 td, th {
-  padding: 1rem 2rem;
+  padding: clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem);
   text-align: start;
 }
 
@@ -179,39 +178,29 @@ th:first-child {
 }
 
 .attribution { 
-  font-size: clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem); 
+  font-size: clamp(0.625rem, 1vw, 0.6875rem); 
   text-align: center; 
-  margin-block: 1.25rem; 
+  margin-block: clamp(1.25rem, 3vw, 2.5rem); 
 }
 
 .attribution a { 
-  color: var(--attribution-link); 
+  color: var(--attribution-link); /* Replaced raw HSLA color with custom variable */
 }
 
 /* DESKTOP ENHANCEMENTS (MOBILE-FIRST BREAKPOINT) */
 
 @media (min-width: 48em) {
   body {
-    padding: 2.5rem 1.25rem;
-  }
-
-  main {
-    padding: 2.5rem;
-    border-radius: 1.5rem;
+    padding: clamp(2rem, 5vw, 2.5rem) clamp(1rem, 3vw, 1.25rem);
   }
 
   .img {
     width: 100%;
     margin: 0;
-    border-radius: 0.75rem;
-  }
-
-  .heading {
-    margin-block-start: 2.5rem;
+    border-radius: clamp(0.5rem, 2vw, 0.75rem);
   }
 
   .attribution {
-    margin-block-start: 2.5rem;
     margin-block-end: 0;
   }
 }
