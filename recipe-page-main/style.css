@@ -8,6 +8,11 @@
   --brown-800: hsl(14, 45%, 36%);
   --rose-800: hsl(332, 51%, 32%);
   --rose-50: hsl(330, 100%, 98%);
+
+  /* Centralized Custom Properties */
+  --card-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
+  --attribution-link: hsla(207, 45%, 44%, 0.98);
+  --divider-border: 1px solid var(--stone-150);
 }
 
 * {
@@ -21,7 +26,7 @@
 body {
   background-color: var(--stone-100);
   font-family: 'Outfit', sans-serif;
-  font-size: 1rem; /* 16px relative base */
+  font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1rem); /* Fluid responsive font base */
   color: var(--stone-600);
   display: grid;
   place-items: center;
@@ -31,10 +36,10 @@ body {
 
 main {
   background: var(--white);
-  width: min(100%, 46rem); /* Fluid sizing with max-width bound (736px) */
+  width: min(100%, 46rem);
   padding: 1.5rem;
   border-radius: 0;
-  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow);
 }
 
 .img {
@@ -75,7 +80,7 @@ h1, h2, h3 {
 .time-needed h4 {
   font-family: 'Outfit', sans-serif;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.25rem);
   color: var(--rose-800);
   margin-block-end: 1rem;
 }
@@ -102,7 +107,7 @@ br {
 .ingredients, .instructions, .nutri-table {
   padding-block-end: 2rem;
   margin-block-end: 2rem;
-  border-block-end: 1px solid var(--stone-150);
+  border-block-end: var(--divider-border);
 }
 
 .nutri-table {
@@ -113,7 +118,7 @@ br {
 
 .ingredients h3, .instructions h3, .nutri-table h3 {
   color: var(--brown-800);
-  font-size: 1.75rem;
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 1.75rem);
   margin-block-end: 1.5rem;
 }
 
@@ -147,7 +152,7 @@ table {
 }
 
 tr {
-  border-block-end: 1px solid var(--stone-150);
+  border-block-end: var(--divider-border);
 }
 
 tr:last-child {
@@ -156,7 +161,7 @@ tr:last-child {
 
 td, th {
   padding: 1rem 2rem;
-  text-align: start; /* Logical property replacing 'left' */
+  text-align: start;
 }
 
 th:first-child, td:first-child {
@@ -174,18 +179,18 @@ th:first-child {
 }
 
 .attribution { 
-  font-size: 0.6875rem; 
+  font-size: clamp(0.6875rem, 0.65rem + 0.2vw, 0.75rem); 
   text-align: center; 
   margin-block: 1.25rem; 
 }
 
 .attribution a { 
-  color: hsla(207, 45%, 44%, 0.98); 
+  color: var(--attribution-link); 
 }
 
 /* DESKTOP ENHANCEMENTS (MOBILE-FIRST BREAKPOINT) */
 
-@media (min-width: 48em) { /* 768px in relative em units */
+@media (min-width: 48em) {
   body {
     padding: 2.5rem 1.25rem;
   }
